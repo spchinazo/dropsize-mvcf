@@ -175,6 +175,8 @@ class FDropSize extends Slim {
                 PhpClass::import("dependence/" . $controller . "Dependence");
 
                 if (class_exists($controller . "Controller")) {
+                    
+                    self::fnAutoLoad($controller, $action);
 
                     $lstClaseController = $controller . "Controller";
                     $lobClassController = new $lstClaseController($args);
@@ -207,8 +209,6 @@ class FDropSize extends Slim {
     public static function fnAutoLoad($controller, $action) {
 
         if (class_exists($controller . "Dependence")) {
-
-            self::fnAutoLoad($controller, $action);
 
             $lstClaseDependence = $controller . "Dependence";
             $lobClassDependece = new $lstClaseDependence();
